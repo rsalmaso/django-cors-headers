@@ -6,13 +6,13 @@ from urllib.parse import urlparse
 from django.conf import settings
 from django.core import checks
 
-from corsheaders.conf import conf
-
 re_type = type(re.compile(""))
 
 
 @checks.register
 def check_settings(app_configs, **kwargs):
+    from .conf import conf
+
     errors = []
 
     if not is_sequence(conf.CORS_ALLOW_HEADERS, str):
